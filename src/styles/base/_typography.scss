@@ -3,3 +3,9 @@
   --heading-font: 'Glory', sans-serif;
   --paragraph-font: 'Urbanist', sans-serif;
 }
+
+.logo {
+  font-family: var(--logo-font);
+  font-size: 84px;
+  color: var(--logo-color);
+}
