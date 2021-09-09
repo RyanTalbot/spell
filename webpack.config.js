@@ -15,6 +15,8 @@ module.exports = {
   mode: mode,
   target: target,
 
+  entry: './src/modules/index.js',
+
   output: {
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'images/[hash][ext][query]',
