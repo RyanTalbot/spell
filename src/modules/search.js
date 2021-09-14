@@ -1,3 +1,5 @@
+import { weatherSearch } from './weather';
+
 export function buildForm() {
   const locationForm = document.createElement('form');
   locationForm.setAttribute('id', 'l-form');
@@ -8,6 +10,7 @@ export function buildForm() {
   locationInput.setAttribute('name', 'locationInput');
   locationInput.setAttribute('value', '');
   locationInput.setAttribute('placeholder', 'City');
+  locationInput.setAttribute('id', 'city-input');
 
   const locationButton = document.createElement('input');
   locationButton.setAttribute('type', 'submit');
@@ -19,7 +22,7 @@ export function buildForm() {
     let val = document.getElementById('l-form');
     let citySearch = val.elements[0].value;
 
-    alert(citySearch);
+    weatherSearch(citySearch);
   });
 
   locationForm.appendChild(locationInput);
