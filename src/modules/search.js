@@ -15,6 +15,7 @@ export function buildForm() {
   const locationButton = document.createElement('input');
   locationButton.setAttribute('type', 'submit');
   locationButton.setAttribute('value', 'Submit');
+  locationButton.classList.add('search-button');
 
   locationButton.addEventListener('click', (e) => {
     e.preventDefault();
