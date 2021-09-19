@@ -37,6 +37,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@tabler/icons": "^1.41.2",
     "core-js": "^3.17.3",
     "regenerator-runtime": "^0.13.9"
   }
