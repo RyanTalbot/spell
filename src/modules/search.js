@@ -1,4 +1,5 @@
 import { weatherSearch } from './weather';
+import SearchIcon from '../resources/icons/search-icon.png';
 
 export function buildForm() {
   const locationForm = document.createElement('form');
@@ -12,10 +13,13 @@ export function buildForm() {
   locationInput.setAttribute('placeholder', 'City');
   locationInput.setAttribute('id', 'city-input');
 
-  const locationButton = document.createElement('input');
-  locationButton.setAttribute('type', 'submit');
-  locationButton.setAttribute('value', 'Submit');
-  locationButton.classList.add('search-button');
+  const locationButton = document.createElement('button');
+  locationButton.setAttribute('class', 'search-button');
+
+  const searchIcon = new Image();
+  searchIcon.src = SearchIcon;
+  searchIcon.setAttribute('id', 'search-png');
+  locationButton.appendChild(searchIcon);
 
   locationButton.addEventListener('click', (e) => {
     e.preventDefault();
