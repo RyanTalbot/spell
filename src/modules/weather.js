@@ -39,34 +39,23 @@ function displayCurrentWeather(location, currentTemp, currentWeather) {
   const currentWeatherContainer = document.createElement('div');
   currentWeatherContainer.classList.add('cur-weather-container');
 
+  const title = document.createElement('p');
+  title.setAttribute('id', 'title');
+  title.textContent = `Showing the current weather for `;
+
   const locationHeader = document.createElement('p');
+  locationHeader.setAttribute('id', 'cur-local');
   locationHeader.textContent = location;
 
   const currentTempHeader = document.createElement('p');
+  currentTempHeader.setAttribute('id', 'cur-temp');
   currentTempHeader.textContent = currentTemp;
 
   const currentWeatherIcon = new Image();
-
-  switch (currentWeather) {
-    case 'Clear':
-      currentWeatherIcon.src = SunIcon;
-      break;
-    case 'Rain':
-      currentWeatherIcon.src = RainIcon;
-      break;
-    case 'Clouds':
-      currentWeatherIcon.src = OvercastIcon;
-      break;
-    case 'Fog':
-      currentWeatherIcon.src = FogIcon;
-      break;
-    case 'Mist':
-      currentWeatherIcon.src = MistIcon;
-      break;
-  }
-
   currentWeatherIcon.setAttribute('id', 'cur-weather-icon');
+  currentWeatherIcon.src = getWeatherIcon(currentWeather);
 
+  currentWeatherContainer.appendChild(title);
   currentWeatherContainer.appendChild(locationHeader);
   currentWeatherContainer.appendChild(currentTempHeader);
   currentWeatherContainer.appendChild(currentWeatherIcon);
@@ -74,4 +63,19 @@ function displayCurrentWeather(location, currentTemp, currentWeather) {
   splash.appendChild(currentWeatherContainer);
 
   return splash;
+}
+
+function getWeatherIcon(currentWeather) {
+  switch (currentWeather) {
+    case 'Clear':
+      return SunIcon;
+    case 'Rain':
+      return RainIcon;
+    case 'Clouds':
+      return OvercastIcon;
+    case 'Fog':
+      return FogIcon;
+    case 'Mist':
+      return MistIcon;
+  }
 }
