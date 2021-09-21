@@ -41,5 +41,26 @@
   .cur-weather-container {
     grid-column: 3 / 7;
     grid-row: 3 / 5;
+    display: grid;
+
+    #title {
+      grid-column: 3 / 5;
+      grid-row: 3 / 4;
+    }
+
+    #cur-local {
+      grid-column: 3 / 5;
+      grid-row: 3 / 4;
+    }
+
+    #cur-temp {
+      grid-column: 3 / 5;
+      grid-row: 4 / 5;
+    }
+
+    #cur-weather-icon {
+      grid-column: 5 / 7;
+      grid-row: 3 / 5;
+    }
   }
 }
