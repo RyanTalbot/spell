@@ -23,3 +23,29 @@
   border: none;
   outline: none;
 }
+
+.cur-weather-container {
+  display: flex;
+
+  #title {
+    justify-self: center;
+  }
+
+  #cur-local {
+    justify-self: center;
+    align-self: flex-end;
+  }
+
+  #cur-temp {
+    font-size: 38px;
+    justify-self: center;
+    margin-top: 15px;
+  }
+
+  #cur-weather-icon {
+    width: 140px;
+    height: 140px;
+    justify-self: center;
+    align-self: center;
+  }
+}
