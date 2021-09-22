@@ -43,6 +43,14 @@ export async function weatherSearch(location) {
   }
 }
 
+function getGroupedDataForEachDate(data) {
+  return data.reduce((days, row) => {
+    const date = row.dt_txt.split(' ')[0];
+    days[date] = [...(days[date] ? days[date] : []), row];
+    return days;
+  }, {});
+}
+
 function getMaxTemp(givenArray, attribute) {
   return Math.max(...givenArray.map((item) => item.main[attribute]));
 }
