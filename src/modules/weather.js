@@ -43,6 +43,14 @@ export async function weatherSearch(location) {
   }
 }
 
+function getMaxTemp(givenArray, attribute) {
+  return Math.max(...givenArray.map((item) => item.main[attribute]));
+}
+
+function getMinTemp(givenArray, attribute) {
+  return Math.min(...givenArray.map((item) => item.main[attribute]));
+}
+
 function getUniqueDates(data) {
   let dates = [];
   let uniqueDates = [];
