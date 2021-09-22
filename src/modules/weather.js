@@ -9,7 +9,7 @@ import FogIcon from '../resources/icons/fog-icon.png';
 export async function weatherSearch(location) {
   try {
     let API = '';
-    let URL = `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API}`;
+    let URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API}`;
 
     let currentTemp;
     let currentWeather;
@@ -28,9 +28,38 @@ export async function weatherSearch(location) {
 
         displayCurrentWeather(location, currentTemp, currentWeather);
       });
+
+    let fiveDayForecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=${API}`;
+
+    let fiveDayForecastResponse = await fetch(fiveDayForecastURL)
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        let uniqueDates = getUniqueDates(res.list);
+      });
   } catch (error) {
     console.log(error);
   }
+}
+
+function getUniqueDates(data) {
+  let dates = [];
+  let uniqueDates = [];
+
+  data.forEach((element) => {
+    let rawDate = element.dt_txt;
+    let extractedDate = rawDate.split(' ');
+    dates.push(extractedDate[0]);
+  });
+
+  dates.forEach((date) => {
+    if (!uniqueDates.includes(date)) {
+      uniqueDates.push(date);
+    }
+  });
+
+  return uniqueDates;
 }
 
 function displayCurrentWeather(location, currentTemp, currentWeather) {
