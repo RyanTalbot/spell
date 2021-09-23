@@ -110,6 +110,23 @@ function displayCurrentWeather(location, currentTemp, currentWeather) {
   return splash;
 }
 
+function createForecastContainer() {
+  const splash = document.getElementById('splash-area');
+
+  const forecastContainer = document.createElement('div');
+  forecastContainer.classList.add('forecast-container');
+  forecastContainer.setAttribute('id', 'fore-cont');
+
+  const forecastTitle = document.createElement('p');
+  forecastTitle.setAttribute('id', 'forecast-title');
+  forecastTitle.textContent = 'Next couple of days look like this';
+
+  forecastContainer.appendChild(forecastTitle);
+  splash.appendChild(forecastContainer);
+
+  return splash;
+}
+
 function getWeatherIcon(currentWeather) {
   switch (currentWeather) {
     case 'Clear':
