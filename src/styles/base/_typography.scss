@@ -9,3 +9,18 @@
   font-size: 84px;
   color: var(--logo-color);
 }
+
+#title {
+  font-family: var(--heading-font);
+  font-size: 18px;
+}
+
+#cur-local {
+  font-family: var(--heading-font);
+  font-size: 52px;
+  letter-spacing: 1px;
+}
+
+#cur-temp {
+  font-family: var(--paragraph-font);
+}
