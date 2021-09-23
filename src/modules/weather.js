@@ -127,6 +127,33 @@ function createForecastContainer() {
   return splash;
 }
 
+function displayForecast(dateGiven, max, min) {
+  const forecastContainer = document.getElementById('fore-cont');
+
+  const forecastItem = document.createElement('div');
+  forecastItem.setAttribute('id', 'day');
+
+  const date = document.createElement('p');
+  date.setAttribute('id', 'date');
+  date.textContent = dateGiven;
+
+  const maxTemp = document.createElement('p');
+  maxTemp.setAttribute('id', 'max-temp');
+  maxTemp.textContent = max;
+
+  const minTemp = document.createElement('p');
+  minTemp.setAttribute('id', 'min-temp');
+  minTemp.textContent = min;
+
+  forecastItem.appendChild(date);
+  forecastItem.appendChild(maxTemp);
+  forecastItem.appendChild(minTemp);
+
+  forecastContainer.appendChild(forecastItem);
+
+  return forecastContainer;
+}
+
 function getWeatherIcon(currentWeather) {
   switch (currentWeather) {
     case 'Clear':
