@@ -59,23 +59,23 @@ function getMinTemp(givenArray, attribute) {
   return Math.min(...givenArray.map((item) => item.main[attribute]));
 }
 
-function getUniqueDates(data) {
-  let dates = [];
-  let uniqueDates = [];
+function getOrdinalSuffix(date) {
+  let dateSliced = date.slice(-2);
+  let dateAsNumber = Number(dateSliced);
 
-  data.forEach((element) => {
-    let rawDate = element.dt_txt;
-    let extractedDate = rawDate.split(' ');
-    dates.push(extractedDate[0]);
-  });
+  let j = dateAsNumber % 10;
+  let k = dateAsNumber % 100;
 
-  dates.forEach((date) => {
-    if (!uniqueDates.includes(date)) {
-      uniqueDates.push(date);
-    }
-  });
-
-  return uniqueDates;
+  if (j === 1 && k !== 11) {
+    return `${dateAsNumber}st`;
+  }
+  if (j === 2 && k !== 12) {
+    return `${dateAsNumber}nd`;
+  }
+  if (j === 3 && k !== 13) {
+    return `${dateAsNumber}rd`;
+  }
+  return `${dateAsNumber}th`;
 }
 
 function displayCurrentWeather(location, currentTemp, currentWeather) {
