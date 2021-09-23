@@ -36,7 +36,23 @@ export async function weatherSearch(location) {
         return res.json();
       })
       .then((res) => {
-        let uniqueDates = getUniqueDates(res.list);
+        console.log(res.list);
+
+        const groupedData = getGroupedDataForEachDate(res.list);
+
+        createForecastContainer();
+
+        for (let date of Object.keys(groupedData)) {
+          console.log(`Date: ${getOrdinalSuffix(date)}`);
+          console.log(`RowCount: ${groupedData[date].length}`);
+          console.log(`Max: ${getMaxTemp(groupedData[date], 'temp_max')}`);
+          console.log(`Min: ${getMinTemp(groupedData[date], 'temp_min')}`);
+          console.log(`\n\n`);
+          let dateFixed = getOrdinalSuffix(date);
+          let max = getMaxTemp(groupedData[date], 'temp_max');
+          let min = getMinTemp(groupedData[date], 'temp_min');
+          displayForecast(dateFixed, max, min);
+        }
       });
   } catch (error) {
     console.log(error);
@@ -52,11 +68,13 @@ function getGroupedDataForEachDate(data) {
 }
 
 function getMaxTemp(givenArray, attribute) {
-  return Math.max(...givenArray.map((item) => item.main[attribute]));
+  return Math.ceil(Math.max(...givenArray.map((item) => item.main[attribute])));
 }
 
 function getMinTemp(givenArray, attribute) {
-  return Math.min(...givenArray.map((item) => item.main[attribute]));
+  return Math.floor(
+    Math.min(...givenArray.map((item) => item.main[attribute]))
+  );
 }
 
 function getOrdinalSuffix(date) {
@@ -117,11 +135,11 @@ function createForecastContainer() {
   forecastContainer.classList.add('forecast-container');
   forecastContainer.setAttribute('id', 'fore-cont');
 
-  const forecastTitle = document.createElement('p');
-  forecastTitle.setAttribute('id', 'forecast-title');
-  forecastTitle.textContent = 'Next couple of days look like this';
+  // const forecastTitle = document.createElement('p');
+  // forecastTitle.setAttribute('id', 'forecast-title');
+  // forecastTitle.textContent = 'Next couple of days look like this';
 
-  forecastContainer.appendChild(forecastTitle);
+  // forecastContainer.appendChild(forecastTitle);
   splash.appendChild(forecastContainer);
 
   return splash;
