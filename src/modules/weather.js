@@ -101,6 +101,7 @@ function displayCurrentWeather(location, currentTemp, currentWeather) {
 
   const currentWeatherContainer = document.createElement('div');
   currentWeatherContainer.classList.add('cur-weather-container');
+  currentWeatherContainer.setAttribute('id', 'current-cont');
 
   const title = document.createElement('p');
   title.setAttribute('id', 'title');
@@ -184,5 +185,15 @@ function getWeatherIcon(currentWeather) {
       return FogIcon;
     case 'Mist':
       return MistIcon;
+  }
+}
+
+export function clear() {
+  const currentCont = document.getElementById('current-cont');
+  const forecastCont = document.getElementById('fore-cont');
+
+  if (document.contains(currentCont)) {
+    currentCont.remove();
+    forecastCont.remove();
   }
 }

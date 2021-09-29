@@ -1,4 +1,4 @@
-import { weatherSearch } from './weather';
+import { weatherSearch, clear } from './weather';
 import SearchIcon from '../resources/icons/search-icon.png';
 
 export function buildForm() {
@@ -27,6 +27,7 @@ export function buildForm() {
     let val = document.getElementById('l-form');
     let citySearch = val.elements[0].value;
 
+    clear();
     weatherSearch(citySearch);
   });
 
