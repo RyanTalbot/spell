@@ -29,6 +29,7 @@ export function buildForm() {
 
     clear();
     weatherSearch(citySearch);
+    locationInput.value = '';
   });
 
   locationForm.appendChild(locationInput);
