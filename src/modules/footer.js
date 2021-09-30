@@ -2,10 +2,25 @@ export default function buildFooter() {
   const footer = document.createElement('footer');
   footer.classList.add('footer');
 
-  const footTest = document.createElement('p');
-  footTest.textContent = 'footer';
+  const footerName = document.createElement('p');
+  footerName.textContent = 'by Ryan Talbot';
+  footerName.setAttribute('id', 'footer-name');
 
-  footer.appendChild(footTest);
+  const iconNotice = document.createElement('p');
+  iconNotice.textContent = 'Icons by Phosphor Icons';
+
+  const phosphorIcons = document.createElement('a');
+  phosphorIcons.setAttribute(
+    'href',
+    'https://github.com/phosphor-icons/phosphor-icons'
+  );
+  phosphorIcons.setAttribute('title', 'Phosphor Icons');
+  phosphorIcons.classList.add('ph-github-logo');
+
+  iconNotice.appendChild(phosphorIcons);
+
+  footer.appendChild(footerName);
+  footer.appendChild(iconNotice);
 
   return footer;
 }

@@ -32,3 +32,23 @@
     font-size: 24px;
   }
 }
+
+.footer {
+  font-family: var(--paragraph-font);
+  font-size: 14px;
+  color: var(--primary-bg-color);
+
+  #footer-name {
+    font-size: 16px;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--primary-bg-color);
+    transition: all 0.3s ease-in-out;
+  }
+
+  a:hover {
+    transform: scale(1.75);
+  }
+}
