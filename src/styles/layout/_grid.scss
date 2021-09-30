@@ -75,3 +75,17 @@
     align-items: center;
   }
 }
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+
+  #footer-name {
+    grid-column: 2 / 3;
+  }
+
+  #icon-notice {
+    grid-column: 3 / 4;
+  }
+}

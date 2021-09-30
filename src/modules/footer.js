@@ -7,6 +7,7 @@ export default function buildFooter() {
   footerName.setAttribute('id', 'footer-name');
 
   const iconNotice = document.createElement('p');
+  iconNotice.setAttribute('id', 'icon-notice');
   iconNotice.textContent = 'Icons by Phosphor Icons';
 
   const phosphorIcons = document.createElement('a');
