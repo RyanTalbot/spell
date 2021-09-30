@@ -24,3 +24,11 @@
 #cur-temp {
   font-family: var(--paragraph-font);
 }
+
+.forecast-container {
+  font-family: var(--paragraph-font);
+
+  #date {
+    font-size: 24px;
+  }
+}
