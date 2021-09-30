@@ -1,16 +1,9 @@
 .search-button {
-  width: 32px;
-  height: 32px;
   border-style: none;
   background-color: var(--secondary-bg-color);
   padding-left: 10px;
 
-  #search-png {
-    width: inherit;
-    height: inherit;
-  }
-
-  #search-png:hover {
+  #search-icon:hover {
     cursor: pointer;
   }
 }
