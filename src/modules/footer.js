@@ -8,7 +8,7 @@ export default function buildFooter() {
 
   const iconNotice = document.createElement('p');
   iconNotice.setAttribute('id', 'icon-notice');
-  iconNotice.textContent = 'Icons by Phosphor Icons';
+  iconNotice.textContent = 'Icons by Phosphor';
 
   const phosphorIcons = document.createElement('a');
   phosphorIcons.setAttribute(
@@ -16,6 +16,7 @@ export default function buildFooter() {
     'https://github.com/phosphor-icons/phosphor-icons'
   );
   phosphorIcons.setAttribute('title', 'Phosphor Icons');
+  phosphorIcons.setAttribute('target', '_blank');
   phosphorIcons.classList.add('ph-github-logo');
 
   iconNotice.appendChild(phosphorIcons);

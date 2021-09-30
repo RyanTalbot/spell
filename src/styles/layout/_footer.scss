@@ -1,0 +1,24 @@
+.footer {
+  #footer-name {
+    justify-self: center;
+    align-self: flex-start;
+    margin-top: 20px;
+  }
+
+  #icon-notice {
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin: 0px 15px 15px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .ph-github-logo {
+      font-size: 1.3333em;
+      line-height: 0.75em;
+      vertical-align: -0.0667em;
+      margin-left: 5px;
+    }
+  }
+}
