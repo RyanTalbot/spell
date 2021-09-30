@@ -8,13 +8,15 @@ import FogIcon from '../resources/icons/fog-icon.png';
 
 export async function weatherSearch(location) {
   try {
-    let API = '';
+    let API = process.env.API;
     let URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API}`;
+    let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=${API}`;
 
     let currentTemp;
     let currentWeather;
 
-    let currentSearchResponse = await fetch(URL)
+    // current weather response
+    await fetch(URL)
       .then((res) => {
         return res.json();
       })
@@ -22,16 +24,11 @@ export async function weatherSearch(location) {
         currentTemp = Math.floor(res.main.temp);
         currentWeather = res.weather[0].main;
 
-        console.log(`${location}`);
-        console.log(`Temp: ${currentTemp}c`);
-        console.log(`Weather: ${currentWeather}`);
-
         displayCurrentWeather(location, currentTemp, currentWeather);
       });
 
-    let fiveDayForecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=${API}`;
-
-    let fiveDayForecastResponse = await fetch(fiveDayForecastURL)
+    // forecast response
+    await fetch(forecastURL)
       .then((res) => {
         return res.json();
       })
@@ -40,6 +37,8 @@ export async function weatherSearch(location) {
 
         const groupedData = getGroupedDataForEachDate(res.list);
 
+        console.log(groupedData);
+
         createForecastContainer();
 
         for (let date of Object.keys(groupedData)) {
@@ -47,6 +46,9 @@ export async function weatherSearch(location) {
           console.log(`RowCount: ${groupedData[date].length}`);
           console.log(`Max: ${getMaxTemp(groupedData[date], 'temp_max')}`);
           console.log(`Min: ${getMinTemp(groupedData[date], 'temp_min')}`);
+          console.log(
+            `Desc ${getForecastDescription(groupedData[date], 'main')}`
+          );
           console.log(`\n\n`);
           let dateFixed = getOrdinalSuffix(date);
           let max = getMaxTemp(groupedData[date], 'temp_max');
@@ -57,6 +59,10 @@ export async function weatherSearch(location) {
   } catch (error) {
     console.log(error);
   }
+}
+
+function getForecastDescription(givenArray, attribute) {
+  return givenArray.map((item) => item.weather[0][attribute]);
 }
 
 function getGroupedDataForEachDate(data) {
