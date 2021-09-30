@@ -1,11 +1,3 @@
-import SunIcon from '../resources/icons/sun-icon.png';
-import WindIcon from '../resources/icons/wind-icon.png';
-import StormIcon from '../resources/icons/storm-icon.png';
-import RainIcon from '../resources/icons/rain-icon.png';
-import OvercastIcon from '../resources/icons/overcast-icon.png';
-import MistIcon from '../resources/icons/mist-icon.png';
-import FogIcon from '../resources/icons/fog-icon.png';
-
 export async function weatherSearch(location) {
   try {
     let API = process.env.API;
@@ -121,9 +113,9 @@ function displayCurrentWeather(location, currentTemp, currentWeather) {
   currentTempHeader.setAttribute('id', 'cur-temp');
   currentTempHeader.textContent = currentTemp;
 
-  const currentWeatherIcon = new Image();
+  const currentWeatherIcon = document.createElement('i');
   currentWeatherIcon.setAttribute('id', 'cur-weather-icon');
-  currentWeatherIcon.src = getWeatherIcon(currentWeather);
+  currentWeatherIcon.classList.add(getWeatherIcon(currentWeather));
 
   currentWeatherContainer.appendChild(title);
   currentWeatherContainer.appendChild(locationHeader);
@@ -182,15 +174,13 @@ function displayForecast(dateGiven, max, min) {
 function getWeatherIcon(currentWeather) {
   switch (currentWeather) {
     case 'Clear':
-      return SunIcon;
+      return 'ph-sun';
     case 'Rain':
-      return RainIcon;
+      return 'ph-cloud-rain';
     case 'Clouds':
-      return OvercastIcon;
+      return 'ph-cloud';
     case 'Fog':
-      return FogIcon;
-    case 'Mist':
-      return MistIcon;
+      return 'ph-cloud-fog';
   }
 }
 
