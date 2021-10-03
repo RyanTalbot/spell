@@ -3,6 +3,10 @@
   background-color: var(--secondary-bg-color);
   padding-left: 10px;
 
+  #search-icon {
+    font-size: 1.5rem;
+  }
+
   #search-icon:hover {
     cursor: pointer;
   }
