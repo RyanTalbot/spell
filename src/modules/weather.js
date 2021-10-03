@@ -45,7 +45,11 @@ export async function weatherSearch(location) {
           let dateFixed = getOrdinalSuffix(date);
           let max = getMaxTemp(groupedData[date], 'temp_max');
           let min = getMinTemp(groupedData[date], 'temp_min');
-          displayForecast(dateFixed, max, min);
+          let forecastDescription = getForecastDescription(
+            groupedData[date],
+            'main'
+          );
+          displayForecast(dateFixed, max, min, forecastDescription);
         }
       });
   } catch (error) {
@@ -54,7 +58,8 @@ export async function weatherSearch(location) {
 }
 
 function getForecastDescription(givenArray, attribute) {
-  return givenArray.map((item) => item.weather[0][attribute]);
+  let arr = givenArray.map((item) => item.weather[0][attribute]);
+  return arr[0];
 }
 
 function getGroupedDataForEachDate(data) {
@@ -144,7 +149,7 @@ function createForecastContainer() {
   return splash;
 }
 
-function displayForecast(dateGiven, max, min) {
+function displayForecast(dateGiven, max, min, forecastDescription) {
   const forecastContainer = document.getElementById('fore-cont');
 
   const forecastItem = document.createElement('div');
@@ -162,9 +167,14 @@ function displayForecast(dateGiven, max, min) {
   minTemp.setAttribute('id', 'min-temp');
   minTemp.textContent = min;
 
+  const forecastIcon = document.createElement('i');
+  forecastIcon.setAttribute('id', 'forecast-weather-icon');
+  forecastIcon.classList.add(getWeatherIcon(forecastDescription));
+
   forecastItem.appendChild(date);
   forecastItem.appendChild(maxTemp);
   forecastItem.appendChild(minTemp);
+  forecastItem.appendChild(forecastIcon);
 
   forecastContainer.appendChild(forecastItem);
 

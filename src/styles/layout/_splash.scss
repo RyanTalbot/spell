@@ -48,3 +48,15 @@
     font-size: 5em;
   }
 }
+
+.forecast-container {
+  #day {
+    align-items: flex-start;
+    justify-items: center;
+  }
+
+  #forecast-weather-icon {
+    font-size: 2rem;
+    align-self: center;
+  }
+}
