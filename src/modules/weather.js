@@ -132,6 +132,16 @@ function displayCurrentWeather(location, currentTemp, currentWeather) {
   return splash;
 }
 
+function capitalizeEachWord(givenText) {
+  const str = givenText.toLowerCase().split(' ');
+
+  for (let i = 0; i < str.length; i++) {
+    str[i] = str[i].charAt(0).toUpperCase() + str[i].substring(1);
+  }
+
+  return str.join(' ');
+}
+
 function createForecastContainer() {
   const splash = document.getElementById('splash-area');
 
