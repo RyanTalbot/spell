@@ -218,6 +218,10 @@ function getWeatherIcon(currentWeather) {
       return 'ph-cloud';
     case 'Fog':
       return 'ph-cloud-fog';
+    case 'Mist':
+      return 'ph-cloud-fog';
+    case 'Snow':
+      return 'ph-snowflake';
   }
 }
 
