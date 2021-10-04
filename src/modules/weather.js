@@ -6,6 +6,7 @@ export async function weatherSearch(location) {
 
     let currentTemp;
     let currentWeather;
+    let currentWeatherDesc;
 
     // current weather response
     await fetch(URL)
@@ -15,8 +16,14 @@ export async function weatherSearch(location) {
       .then((res) => {
         currentTemp = Math.floor(res.main.temp);
         currentWeather = res.weather[0].main;
+        currentWeatherDesc = res.weather[0].description;
 
-        displayCurrentWeather(location, currentTemp, currentWeather);
+        displayCurrentWeather(
+          location,
+          currentTemp,
+          currentWeather,
+          currentWeatherDesc
+        );
       });
 
     // forecast response
@@ -99,7 +106,12 @@ function getOrdinalSuffix(date) {
   return `${dateAsNumber}th`;
 }
 
-function displayCurrentWeather(location, currentTemp, currentWeather) {
+function displayCurrentWeather(
+  location,
+  currentTemp,
+  currentWeather,
+  description
+) {
   const splash = document.getElementById('splash-area');
 
   const currentWeatherContainer = document.createElement('div');
@@ -112,11 +124,11 @@ function displayCurrentWeather(location, currentTemp, currentWeather) {
 
   const currentTempHeader = document.createElement('p');
   currentTempHeader.setAttribute('id', 'cur-temp');
-  // currentTempHeader.textContent = currentTemp;
+  currentTempHeader.textContent = currentTemp;
 
   const title = document.createElement('p');
   title.setAttribute('id', 'title');
-  title.textContent = `It is currently ${currentTemp}℃ in`;
+  title.textContent = capitalizeEachWord(description);
 
   const currentWeatherIcon = document.createElement('i');
   currentWeatherIcon.setAttribute('id', 'cur-weather-icon');
@@ -124,7 +136,7 @@ function displayCurrentWeather(location, currentTemp, currentWeather) {
 
   currentWeatherContainer.appendChild(title);
   currentWeatherContainer.appendChild(locationHeader);
-  // currentWeatherContainer.appendChild(currentTempHeader);
+  currentWeatherContainer.appendChild(currentTempHeader);
   currentWeatherContainer.appendChild(currentWeatherIcon);
 
   splash.appendChild(currentWeatherContainer);
@@ -171,11 +183,15 @@ function displayForecast(dateGiven, max, min, forecastDescription) {
 
   const maxTemp = document.createElement('p');
   maxTemp.setAttribute('id', 'max-temp');
-  maxTemp.textContent = max;
+  maxTemp.textContent = `${max}°`;
+
+  const separator = document.createElement('p');
+  separator.setAttribute('id', 'separate');
+  separator.textContent = `/`;
 
   const minTemp = document.createElement('p');
   minTemp.setAttribute('id', 'min-temp');
-  minTemp.textContent = min;
+  minTemp.textContent = `${min}°`;
 
   const forecastIcon = document.createElement('i');
   forecastIcon.setAttribute('id', 'forecast-weather-icon');
@@ -184,6 +200,7 @@ function displayForecast(dateGiven, max, min, forecastDescription) {
   forecastItem.appendChild(date);
   forecastItem.appendChild(maxTemp);
   forecastItem.appendChild(minTemp);
+  forecastItem.appendChild(separator);
   forecastItem.appendChild(forecastIcon);
 
   forecastContainer.appendChild(forecastItem);

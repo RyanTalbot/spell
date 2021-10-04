@@ -29,7 +29,7 @@
 
   #title {
     justify-self: center;
-    align-self: flex-start;
+    align-self: flex-end;
   }
 
   #cur-local {
@@ -38,14 +38,14 @@
   }
 
   #cur-temp {
-    font-size: 38px;
-    // justify-self: flex-start;
+    justify-self: center;
+    align-self: flex-end;
   }
 
   #cur-weather-icon {
     justify-self: center;
     align-self: center;
-    font-size: 8em;
+    font-size: 7.5em;
   }
 }
 

@@ -55,10 +55,10 @@
       grid-row: 2 / 3;
     }
 
-    // #cur-temp {
-    //   grid-column: 4 / 5;
-    //   grid-row: 2 / 3;
-    // }
+    #cur-temp {
+      grid-column: 1 / 3;
+      grid-row: 2 / 3;
+    }
 
     #cur-weather-icon {
       grid-column: 5 / 7;
@@ -76,11 +76,11 @@
 
     #day {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(4, 1fr);
 
       #date {
-        grid-column: 1 / 3;
+        grid-column: 1 / 4;
         grid-row: 1 / 2;
       }
 
@@ -90,12 +90,17 @@
       }
 
       #max-temp {
+        grid-column: 3 / 4;
+        grid-row: 4 / 5;
+      }
+
+      #separate {
         grid-column: 2 / 3;
         grid-row: 4 / 5;
       }
 
       #forecast-weather-icon {
-        grid-column: 1 / 3;
+        grid-column: 1 / 4;
         grid-row: 2 / 4;
       }
     }
