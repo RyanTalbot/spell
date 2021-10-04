@@ -43,26 +43,26 @@
     grid-row: 3 / 5;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 
     #title {
-      grid-column: 2 / 6;
+      grid-column: 1 / 3;
       grid-row: 1 / 2;
     }
 
     #cur-local {
-      grid-column: 2 / 4;
-      grid-row: 1 / 2;
-    }
-
-    #cur-temp {
-      grid-column: 2 / 4;
+      grid-column: 3 / 5;
       grid-row: 2 / 3;
     }
 
+    // #cur-temp {
+    //   grid-column: 4 / 5;
+    //   grid-row: 2 / 3;
+    // }
+
     #cur-weather-icon {
-      grid-column: 4 / 7;
-      grid-row: 1 / 3;
+      grid-column: 5 / 7;
+      grid-row: 1 / 4;
     }
   }
 

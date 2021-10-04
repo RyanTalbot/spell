@@ -106,17 +106,17 @@ function displayCurrentWeather(location, currentTemp, currentWeather) {
   currentWeatherContainer.classList.add('cur-weather-container');
   currentWeatherContainer.setAttribute('id', 'current-cont');
 
-  const title = document.createElement('p');
-  title.setAttribute('id', 'title');
-  title.textContent = `Showing the current weather for `;
-
   const locationHeader = document.createElement('p');
   locationHeader.setAttribute('id', 'cur-local');
   locationHeader.textContent = location;
 
   const currentTempHeader = document.createElement('p');
   currentTempHeader.setAttribute('id', 'cur-temp');
-  currentTempHeader.textContent = currentTemp;
+  // currentTempHeader.textContent = currentTemp;
+
+  const title = document.createElement('p');
+  title.setAttribute('id', 'title');
+  title.textContent = `It is currently ${currentTemp}℃ in`;
 
   const currentWeatherIcon = document.createElement('i');
   currentWeatherIcon.setAttribute('id', 'cur-weather-icon');
@@ -124,7 +124,7 @@ function displayCurrentWeather(location, currentTemp, currentWeather) {
 
   currentWeatherContainer.appendChild(title);
   currentWeatherContainer.appendChild(locationHeader);
-  currentWeatherContainer.appendChild(currentTempHeader);
+  // currentWeatherContainer.appendChild(currentTempHeader);
   currentWeatherContainer.appendChild(currentWeatherIcon);
 
   splash.appendChild(currentWeatherContainer);

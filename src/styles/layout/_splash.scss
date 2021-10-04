@@ -29,23 +29,23 @@
 
   #title {
     justify-self: center;
+    align-self: flex-start;
   }
 
   #cur-local {
     justify-self: center;
-    align-self: flex-end;
+    align-self: center;
   }
 
   #cur-temp {
     font-size: 38px;
-    justify-self: center;
-    margin-top: 15px;
+    // justify-self: flex-start;
   }
 
   #cur-weather-icon {
     justify-self: center;
     align-self: center;
-    font-size: 5em;
+    font-size: 8em;
   }
 }
 
