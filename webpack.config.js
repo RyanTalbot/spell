@@ -64,7 +64,10 @@ module.exports = {
 
   devtool: 'source-map',
   devServer: {
-    contentBase: './dist',
-    hot: true,
+    // contentBase: './dist',
+    static: {
+      directory: path.join(__dirname, 'dist/'),
+    },
+    hot: 'only',
   },
 };
