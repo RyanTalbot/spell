@@ -120,11 +120,11 @@ function displayCurrentWeather(
 
   const locationHeader = document.createElement('p');
   locationHeader.setAttribute('id', 'cur-local');
-  locationHeader.textContent = location;
+  locationHeader.textContent = capitalizeEachWord(location);
 
   const currentTempHeader = document.createElement('p');
   currentTempHeader.setAttribute('id', 'cur-temp');
-  currentTempHeader.textContent = currentTemp;
+  currentTempHeader.textContent = `${currentTemp}℃`;
 
   const title = document.createElement('p');
   title.setAttribute('id', 'title');
