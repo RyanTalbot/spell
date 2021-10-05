@@ -32,23 +32,11 @@ export async function weatherSearch(location) {
         return res.json();
       })
       .then((res) => {
-        console.log(res.list);
-
         const groupedData = getGroupedDataForEachDate(res.list);
-
-        console.log(groupedData);
 
         createForecastContainer();
 
         for (let date of Object.keys(groupedData)) {
-          console.log(`Date: ${getOrdinalSuffix(date)}`);
-          console.log(`RowCount: ${groupedData[date].length}`);
-          console.log(`Max: ${getMaxTemp(groupedData[date], 'temp_max')}`);
-          console.log(`Min: ${getMinTemp(groupedData[date], 'temp_min')}`);
-          console.log(
-            `Desc ${getForecastDescription(groupedData[date], 'main')}`
-          );
-          console.log(`\n\n`);
           let dateFixed = getOrdinalSuffix(date);
           let max = getMaxTemp(groupedData[date], 'temp_max');
           let min = getMinTemp(groupedData[date], 'temp_min');
@@ -56,6 +44,7 @@ export async function weatherSearch(location) {
             groupedData[date],
             'main'
           );
+
           displayForecast(dateFixed, max, min, forecastDescription);
         }
       });
@@ -161,11 +150,6 @@ function createForecastContainer() {
   forecastContainer.classList.add('forecast-container');
   forecastContainer.setAttribute('id', 'fore-cont');
 
-  // const forecastTitle = document.createElement('p');
-  // forecastTitle.setAttribute('id', 'forecast-title');
-  // forecastTitle.textContent = 'Next couple of days look like this';
-
-  // forecastContainer.appendChild(forecastTitle);
   splash.appendChild(forecastContainer);
 
   return splash;
