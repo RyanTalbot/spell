@@ -2,6 +2,7 @@
   --logo-font: 'Fugaz One', cursive;
   --heading-font: 'Glory', sans-serif;
   --paragraph-font: 'Urbanist', sans-serif;
+  color: var(--font-dark);
 }
 
 .logo {
@@ -37,7 +38,7 @@
 .footer {
   font-family: var(--paragraph-font);
   font-size: 14px;
-  color: var(--primary-bg-color);
+  color: var(--font-light);
 
   #footer-name {
     font-size: 16px;
